@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Mobile Makers. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RootViewController.h"
+#import "VacationViewController.h"
 
-@interface ViewController ()
+@interface RootViewController ()
 
 @end
 
-@implementation ViewController
+@implementation RootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +23,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    VacationViewController *vc = segue.destinationViewController;
+    vc.title = [sender currentTitle];
+    if ([segue.identifier isEqualToString:@"BlueStarSegue"])
+    {
+        vc.isBlueStar = true;
+    }
 }
 
 @end
